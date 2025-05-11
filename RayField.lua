@@ -133,20 +133,7 @@ _G.LastRayField.Name = 'Old Arrayfield'
 _G.LastRayField.Enabled = false
 end)
 local ParentObject = function(Gui)
-    local success, failure = pcall(function()
-        if get_hidden_gui or gethui then
-            local hiddenUI = get_hidden_gui or gethui
-            Gui.Parent = hiddenUI()
-        elseif (not is_sirhurt_closure) and (syn and syn.protect_gui) then
-            syn.protect_gui(Gui)
-            Gui.Parent = CoreGui
-        elseif CoreGui then
-            Gui.Parent = CoreGui
-        end
-    end)
-    if not success and failure then
-        Gui.Parent = LocalPlayer:FindFirstChildWhichIsA("PlayerGui")
-    end
+    Gui.Parent = game:GetService("CoreGui")
 	_G.LastRayField = Rayfield
 end
 ParentObject(Rayfield)
